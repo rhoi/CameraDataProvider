@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.camera2"
-        minSdk 21
+        minSdk 29
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -19,6 +20,9 @@ android {
                 cppFlags ''
             }
         }
+    }
+    androidExtensions {
+        experimental = true
     }
 
     buildTypes {
@@ -33,6 +37,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src']
+        }
     }
     externalNativeBuild {
         cmake {
